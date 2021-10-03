@@ -31,7 +31,7 @@ public class ProductService {
 
     public String updateProduct(Product product) {
         for (Product product1: products) {
-            if (product1.equals(product)) {
+            if (product1.getId().equals(product.getId())) {
                 product1.setCategory(product.getCategory());
                 product1.setDescription(product.getDescription());
                 product1.setPrice(product.getPrice());
