@@ -3,11 +3,13 @@ package com.serverwarrior.springbootcart.service;
 import com.fasterxml.jackson.databind.deser.std.CollectionDeserializer;
 import com.serverwarrior.springbootcart.dto.Product;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ProductService {
     List<Product> products = new ArrayList<>();
 
@@ -42,9 +44,10 @@ public class ProductService {
         return "Product update failed";
     }
 
-    public String deleteProduct(Product product) {
+    public String deleteProductById(Integer id) {
         for (Product product1: products) {
-            if (product1.equals(product)) {
+            if (product1.getId().equals(id)) {
+                Product product = getProduct(product1.getId());
                 products.remove(product);
                 return "Product deletion successful";
             }

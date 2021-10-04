@@ -1,6 +1,7 @@
 package com.serverwarrior.springbootcart.controller;
 
 import com.serverwarrior.springbootcart.dto.Product;
+
 import com.serverwarrior.springbootcart.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,11 @@ import java.util.List;
 @RequestMapping("/v1")
 public class ProductController {
 
-    @Autowired
     private ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     private Logger logger = LoggerFactory.getLogger(ProductController.class);
 
@@ -47,9 +51,9 @@ public class ProductController {
         return productService.updateProduct(product);
     }
 
-    @DeleteMapping("/product")
-    String deleteProduct(@RequestBody Product product) {
-        return productService.deleteProduct(product);
+    @DeleteMapping("/product/{id}")
+    String deleteProduct(@PathVariable Integer id) {
+        return productService.deleteProductById(id);
     }
 
 }

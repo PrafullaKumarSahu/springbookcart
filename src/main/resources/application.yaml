@@ -1,0 +1,6 @@
+Server:
+  port: 9091
+
+Spring:
+  application:
+    name: Product Microsevice
