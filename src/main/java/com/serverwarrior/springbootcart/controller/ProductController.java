@@ -13,14 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api/v1")
 public class ProductController {
 
+    @Autowired
     private ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
 
     private Logger logger = LoggerFactory.getLogger(ProductController.class);
 
@@ -42,7 +39,7 @@ public class ProductController {
     }
 
     @GetMapping("/productList/{category}")
-    List getProductsByCategory(@PathVariable String category) {
+    List<Product> getProductByCategory(@PathVariable String category) {
         return productService.getProductsByCategory(category);
     }
 

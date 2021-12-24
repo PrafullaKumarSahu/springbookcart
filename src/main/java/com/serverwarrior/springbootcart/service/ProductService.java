@@ -1,8 +1,6 @@
 package com.serverwarrior.springbootcart.service;
 
-import com.fasterxml.jackson.databind.deser.std.CollectionDeserializer;
 import com.serverwarrior.springbootcart.dto.Product;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
