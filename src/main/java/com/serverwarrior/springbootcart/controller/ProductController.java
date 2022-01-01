@@ -3,6 +3,7 @@ package com.serverwarrior.springbootcart.controller;
 import com.serverwarrior.springbootcart.dto.Product;
 
 import com.serverwarrior.springbootcart.service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 public class ProductController {
@@ -19,12 +21,10 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    private Logger logger = LoggerFactory.getLogger(ProductController.class);
-
     @PostMapping("/addProduct")
     ResponseEntity<Product> addProduct(@RequestBody Product product) {
         String status = productService.addProduct(product);
-        logger.info("Product added status: {}", status);
+        log.info("Product added status: {}", status);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
