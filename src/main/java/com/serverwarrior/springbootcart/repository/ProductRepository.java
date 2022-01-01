@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ProductRepository extends MongoRepository<Product, Integer> {
     @Query("{'Category.name':?0}")
-    List findByCategory();
+    List findByCategory(String category);
 }

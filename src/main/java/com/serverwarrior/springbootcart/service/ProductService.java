@@ -28,7 +28,7 @@ public class ProductService {
     }
 
     public List getProductsByCategory(String category) {
-        return productRepository.findByCategory();
+        return productRepository.findByCategory(category);
     }
 
     public String updateProduct(Product product) {
