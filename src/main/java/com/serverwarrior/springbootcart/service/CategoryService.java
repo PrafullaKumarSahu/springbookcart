@@ -1,17 +1,20 @@
 package com.serverwarrior.springbootcart.service;
 
 import com.serverwarrior.springbootcart.dto.Category;
+import com.serverwarrior.springbootcart.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CategoryService {
 
-    List<Category> categoryList = new ArrayList<Category>();
+    private CategoryRepository categoryRepository;
+
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+
     public String addCategory(Category category) {
-        categoryList.add(category);
+        categoryRepository.save(category);
         return "success";
     }
 }

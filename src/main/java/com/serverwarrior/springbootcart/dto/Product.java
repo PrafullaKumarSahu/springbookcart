@@ -1,13 +1,23 @@
 package com.serverwarrior.springbootcart.dto;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+
+@Document(collection = "product")
 public class Product {
+
+    @Id
     private Integer id;
     private String name;
     private String description;
     private double price;
+    private String currency;
     private double discount;
     private String discountDescription;
     private Category category;
+    private List<String> imageURLs;
 
     public Integer getId() {
         return id;
@@ -63,5 +73,21 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<String> getImageURLs() {
+        return imageURLs;
+    }
+
+    public void setImageURLs(List<String> imageURLs) {
+        this.imageURLs = imageURLs;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

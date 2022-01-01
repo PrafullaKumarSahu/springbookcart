@@ -4,3 +4,8 @@ Server:
 Spring:
   application:
     name: Product Microsevice
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: springcart
