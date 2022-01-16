@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
@@ -23,7 +25,7 @@ public class CategoryController {
     }
 
     @PostMapping("/addCategory")
-    ResponseEntity<Category> addProduct(@RequestBody Category category) {
+    ResponseEntity<Category> addProduct(@RequestBody @Valid Category category) {
         String status = categoryService.addCategory(category);
         log.info("Category added status: {}", status);
         return ResponseEntity.status(HttpStatus.CREATED).body(category);
