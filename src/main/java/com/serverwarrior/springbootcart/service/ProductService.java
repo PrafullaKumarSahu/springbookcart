@@ -27,7 +27,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product getProduct(Integer id) {
+    public Product getProduct(String id) {
         return productRepository.findById(id).get();
     }
 
@@ -40,7 +40,7 @@ public class ProductService {
         return "Product updated successfully.";
     }
 
-    public String deleteProductById(Integer id) {
+    public String deleteProductById(String id) {
         productRepository.deleteById(id);
         return "product deletion successful.";
     }

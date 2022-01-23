@@ -1,7 +1,6 @@
 package com.serverwarrior.springbootcart.dto;
 
 import lombok.*;
-import org.springframework.core.convert.Property;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +16,7 @@ import java.util.List;
 public class Product {
 
     @Id
-    private Integer id;
+    private String id;
     @NotNull(message = "Name should not be null")
     private String name;
     private String description;
