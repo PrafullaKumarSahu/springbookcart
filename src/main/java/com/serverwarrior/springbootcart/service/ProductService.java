@@ -1,6 +1,7 @@
 package com.serverwarrior.springbootcart.service;
 
 import com.serverwarrior.springbootcart.dto.Product;
+import com.serverwarrior.springbootcart.exception.OfferNotValidException;
 import com.serverwarrior.springbootcart.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class ProductService {
     }
 
     public String addProduct(Product product) {
+        if (product.getPrice() == 0 && product.getDiscount() > 0) {
+            throw new OfferNotValidException("Discount not available at 0 product price!");
+        }
         productRepository.save(product);
         return "success";
     }
