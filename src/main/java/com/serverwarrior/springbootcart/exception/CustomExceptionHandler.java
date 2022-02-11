@@ -31,6 +31,16 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
+    @ExceptionHandler({CurrencyNotAvailableException.class})
+    ResponseEntity<?> CurrencyNotAvailableHandler(Exception exception, ServletWebRequest swr){
+        APIError apiError = new APIError();
+        apiError.setTimeStamp(LocalDateTime.now());
+        apiError.setPathUri(swr.getDescription(true));
+        apiError.setStatus(HttpStatus.BAD_REQUEST);
+        apiError.setErrors(Arrays.asList(exception.getClass() + ": " + exception.getMessage()));
+        return new ResponseEntity(apiError, new HttpHeaders(), apiError.getStatus());
+    }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();

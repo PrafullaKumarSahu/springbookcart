@@ -17,7 +17,7 @@ public class Product {
 
     @Id
     private String id;
-    @NotNull(message = "Name should not be null")
+    @NotNull(message = "Name should not be null!")
     private String name;
     private String description;
     @Min(0)
@@ -26,7 +26,7 @@ public class Product {
     @Max(100)
     private double discount;
     private String discountDescription;
-    @NotNull(message = "Category should not be null")
+    @NotNull(message = "Category should not be null!")
     private Category category;
     private List<String> imageURLs;
 }
