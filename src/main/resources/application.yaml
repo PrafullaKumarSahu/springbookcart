@@ -9,6 +9,8 @@ Spring:
       host: localhost
       port: 27017
       database: springcart
+  profiles:
+    active: dev
 
 product:
   currencies:
@@ -16,3 +18,14 @@ product:
     - USD
     - AUD
     - EUR
+
+---
+#New prod profile
+
+server:
+  port: 9094
+spring:
+  config:
+    activate:
+      on-profile:
+        - prod

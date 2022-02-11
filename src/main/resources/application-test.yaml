@@ -1,0 +1,11 @@
+server:
+  port: 9093
+
+spring:
+  application:
+    name: Product Microsevice in test environment
+
+product:
+  currencies:
+    - INR
+    - USD
